@@ -8,3 +8,6 @@ CREATE TABLE animals (
     neutered BOOL,
     weight_kg FLOAT(2,2),
 );
+
+/* ADD SPECIES COLUMN */
+ALTER TABLE animals ADD species varchar(30);
