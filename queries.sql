@@ -9,6 +9,9 @@ SELECT * FROM animals WHERE name != 'Gabumon';
 SELECT * FROM animals WHERE weight_kg >= 10.4 AND weight_kg <= 17.3;
 SELECT name FROM animals WHERE neutered = true AND escape_attempts < 3;
 
+/* ADD SPECIES COLUMN */
+ALTER TABLE animals ADD species varchar(30);
+
 /* SET SPECIES TO UNSPECIFIED AND THEN ROLLBACK */
 BEGIN TRANSACTION;
 UPDATE animals SET species='unspecified';
