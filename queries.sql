@@ -40,3 +40,12 @@ SELECT AVG(weight_kg) FROM animals; /* What is the average weight of animals? */
 SELECT neutered, SUM(escape_attempts) FROM animals GROUP BY neutered; /* Who escapes the most, neutered or not neutered animals? */
 SELECT species, MIN(weight_kg), MAX(weight_kg) FROM animals GROUP BY species; /* What is the minimum and maximum weight of each type of animal? */
 SELECT species, AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY species; /* What is the average number of escape attempts per animal type of those born between 1990 and 2000? */
+
+/* Queries using JOIN */
+SELECT animals.name FROM animals JOIN owners ON animals.owner_id = owners.id WHERE owners.full_name = 'Melody Pond';
+SELECT animals.name FROM animals JOIN species ON animals.species_id = species.id WHERE species.name = 'Pokemon';
+SELECT owners.full_name, animals.name FROM owners LEFT JOIN animals ON animals.owner_id = owners.id;
+SELECT COUNT(animals.name), species.name FROM animals JOIN species ON animals.species_id = species.id GROUP BY species.name;
+SELECT animals.name, species.name, owners.full_name FROM animals JOIN owners ON owners.id = animals.owner_id JOIN species ON animals.species_id = species.id WHERE owners.full_name = 'Jennifer Orwell' AND species.name LIKE 'Digimon';
+SELECT animals.name, animals.escape_attempts, owners.full_name FROM animals JOIN owners ON animals.owner_id = owners.id WHERE owners.full_name = 'Dean Winchester' AND animals.escape_attempts = 0;
+SELECT COUNT(animals.name), owners.full_name FROM animals JOIN owners ON animals.owner_id = owners.id GROUP BY owners.full_name;
