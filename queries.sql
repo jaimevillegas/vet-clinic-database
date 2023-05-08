@@ -76,3 +76,4 @@ SELECT COUNT(visits.animal_id) FROM visits JOIN animals ON visits.animal_id = an
 
 /* What speciality should Maisy Smith consider gretting? Look for the species she gets the most */
 SELECT COUNT(species.name) as Count, species.name FROM visits JOIN vets ON visits.vet_id = vets.id JOIN animals ON visits.animal_id = animals.id JOIN species ON animals.species_id = species.id WHERE vets.name = 'Maisy Smith' GROUP BY species.name;
+
